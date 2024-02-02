@@ -1,0 +1,34 @@
+TrieNode class:
+
+This class represents a node in the Trie data structure.
+It has two member variables:
+isEndOfWord (bool): Indicates whether the current node represents the end of a valid word.
+children (unordered_map<char, TrieNode*>): Stores the child nodes of the current node, mapping characters to corresponding child nodes.
+The constructor initializes isEndOfWord to false.
+The destructor recursively deletes all the child nodes of the current node.
+Trie class:
+
+This class implements the Trie data structure.
+It has one private member variable:
+root (TrieNode*): Pointer to the root node of the Trie.
+The constructor initializes the root to a new TrieNode.
+The destructor recursively deletes all nodes in the Trie starting from the root.
+The insert function inserts a word into the Trie. It iterates over each character of the word and checks if the character exists as a child of the current node. If not, it creates a new child node for that character. Finally, it marks the last node of the word as the end of a valid word.
+The search function searches for a word in the Trie. It traverses the Trie based on each character of the word. If the character is not found at any point during the traversal, or if the traversal reaches the end of the word without marking the last node as the end of a valid word, it returns false. Otherwise, it returns true.
+isMisspelled function:
+
+This function takes a word and a Trie as input and checks if the word is misspelled.
+It calls the search function of the Trie and returns the negation of the result. If the word is not found in the Trie, it means it is misspelled.
+main function:
+
+In the main function, an instance of the Trie class named dictionary is created.
+The code reads the "dictionary.txt" file, which contains a list of valid words, and inserts each word into the Trie using the insert method of the dictionary.
+The "dictionary.txt" file is then closed.
+The code reads the "engpanish.txt" file, which contains the text to be spell-checked. The contents of the file are stored in the inputText string.
+If the "engpanish.txt" file is successfully opened, the code initializes a string variable currentWord to store the currently processed word.
+The code starts a timer using the chrono library to measure the execution time.
+It iterates over each character in the inputText. If the character is alphabetic (checked using isalpha), it converts it to lowercase and appends it to the currentWord string.
+If a non-alphabetic character is encountered and the currentWord string is not empty, it checks if the word is misspelled by calling the isMisspelled function. If it is misspelled, it prints the word as a misspelled word. Then, the currentWord string is cleared to start processing the next word.
+After processing all the characters in the input text, the timer is stopped, and the elapsed time is calculated.
+Finally, the program outputs any misspelled words found and the elapsed time.
+I hope this detailed explanation helps you understand each function and class in the code. If you have any further questions, feel free to ask!
